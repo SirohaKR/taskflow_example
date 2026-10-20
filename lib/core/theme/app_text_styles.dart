@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:taskflow_example/core/theme/app_colors.dart';
 
 /// 공통으로 사용 할 텍스트 스타일
-abstract final class AppTextStyle {
+abstract final class AppTextStyles {
   static const String fontFamily = 'Pretendard';
   static const List<String> fontFamilyFallback = [
     fontFamily
@@ -93,4 +93,56 @@ abstract final class AppTextStyle {
 
   static final TextStyle bodyLargeMultiline = bodyLarge.copyWith(height: 1.5);
   static final TextStyle bodyLargeCompact = bodyLarge.copyWith(height: 19 / 16);
+  static final TextStyle bodyLargeBoldCompact = bodyLargeCompact.copyWith(fontWeight: FontWeight.w700);
+  static final TextStyle bodyMediumCompact = bodyMedium.copyWith(height: 17 / 14);
+  static final TextStyle bodyMediumSemiBold = bodyMedium.copyWith(fontWeight: FontWeight.w600);
+  static final TextStyle bodyMediumSemiBoldCompact = bodyMediumSemiBold.copyWith(height: 17 / 14);
+  static final TextStyle badgeBold = badge.copyWith(
+    fontWeight: FontWeight.w700,
+    height: 14 / 12,
+  );
+  static final TextStyle button = h4.copyWith(fontFamily:  fontFamily, fontSize: 14, fontWeight: FontWeight.w600);
+  static final TextStyle textButton = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+  );
+  static final TextStyle fieldHint = bodyLargeMultiline.copyWith(color: AppColors.textMuted);
+  static const TextStyle errorToast = TextStyle(color: AppColors.white);
+  static const TextStyle themeHeadlineLarge = TextStyle(
+    color: AppColors.textPrimary,
+    fontSize: 30,
+    height: 1.25,
+    fontWeight: FontWeight.w800,
+    letterSpacing: -0.8,
+  );
+  static const TextStyle themeHeadlineMedium = TextStyle(
+    color: AppColors.textPrimary,
+    fontSize: 24,
+    height: 1.3,
+    fontWeight: FontWeight.w800,
+    letterSpacing: -0.5,
+  );
+  static const TextStyle themeTitleLarge = TextStyle(
+    color: AppColors.textPrimary,
+    fontSize: 20,
+    height: 1.35,
+    fontWeight: FontWeight.w700,
+  );
+  static const TextStyle themeTitleMedium = TextStyle(
+    color: AppColors.textPrimary,
+    fontSize: 17,
+    height: 1.4,
+    fontWeight: FontWeight.w700,
+  );
+  static const TextStyle themeBodyLarge = TextStyle(
+    color: AppColors.textPrimary,
+    fontSize: 16,
+    height: 1.5,
+  );
+  static const TextStyle themeBodyMedium = TextStyle(
+    color: AppColors.textPrimary,
+    fontSize: 14,
+    height: 1.5,
+  );
 }
