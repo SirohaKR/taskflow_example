@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:taskflow_example/app/config/app_router.dart';
 import 'package:taskflow_example/core/theme/app_colors.dart';
+import 'package:taskflow_example/core/theme/app_theme.dart';
 
 /// 앱 테마 설정 / 라우팅 구성
 class TaskFlowApp extends ConsumerWidget {
@@ -8,46 +10,48 @@ class TaskFlowApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(appRouterProvider);
 
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'TaskFlow',
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: AppColors.transparent),
-      ),
-      home: const _AppFrame(title: 'Flutter Demo Home Page'),
+      theme: AppTheme.light,
+      routerConfig: router,
+      builder: (context, child) {
+        return _AppFrame(
+          child: child ?? const SizedBox.shrink(),
+        );
+      },
     );
   }
 }
 
 /// 공통 앱 위젯
 class _AppFrame extends StatelessWidget {
-  const _AppFrame({required this.title});
-  
-  final String title;
+  const _AppFrame({required this.child});
+
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("widget.title"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: .center,
-          children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '11111111111',
-              style: Theme.of(context).textTheme.headlineMedium,
+    return ColoredBox(
+      color: AppColors.outerBackground,
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 820),
+          child: DecoratedBox(
+            decoration: const BoxDecoration(
+              color: AppColors.background,
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  color: AppColors.frameShadow,
+                  blurRadius: 24,
+                  spreadRadius: 2,
+                ),
+              ]
             ),
-          ],
+            child: MediaQuery.withNoTextScaling(child: child,),
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }

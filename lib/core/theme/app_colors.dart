@@ -11,6 +11,9 @@ abstract final class AppColors {
   static const Color fieldBorder = Color(0xFFE0E7FF);
   static const Color controlBorder = Color(0xFFCBD5E1);
   static const Color danger = Color(0xFFD92D20);
+  static const Color outerBackground = Color(0xFFF5F5F4);
+  static const Color background = Color(0xFFFAFAF9);
+  static const Color frameShadow = Color(0x00000000);
 
   /// 비활성화 상태 탭 색상
   static const Color inactiveTab = Color(0xFFE2E8F0);
